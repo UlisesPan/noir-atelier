@@ -3,8 +3,14 @@ import { useState, useRef, useEffect } from "react";
 import { Navlinks } from "../../app/helpers/Navlinks";
 import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
+import { IUserSession } from "@/interfaces/userSession";
 
-const ProfileMenu = ({ dataUser, logout }) => {
+interface ProfileMenuProps {
+  dataUser: null | IUserSession; 
+  logout: () => void; // Asumiendo que es una función que no devuelve nada
+}
+
+const ProfileMenu = ({  logout }: ProfileMenuProps) => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
 
