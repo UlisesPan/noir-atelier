@@ -4,14 +4,24 @@ import { Formik } from "formik"
 import { initialValues, registerSchema } from "./register.schema"
 import { ErrorMessage, Field, Form } from "formik"
 import { registerUser } from "@/services/auth"
+import { useRouter } from "next/navigation"
 
 const RegisterForm = () => {
+  const router = useRouter()
+
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={registerSchema}
-      onSubmit={async (values) => {
-        await registerUser(values)
+      onSubmit={async (values, { setSubmitting }) => {
+        try {
+          await registerUser(values)
+          router.push("/login?registered=1")
+        } catch (error) {
+          console.error("Error al registrar usuario", error)
+        } finally {
+          setSubmitting(false)
+        }
       }}
     >
       <Form className="grid gap-6" noValidate>

@@ -2,12 +2,13 @@
 import { useState, useRef, useEffect } from "react";
 import { Navlinks } from "../../app/helpers/Navlinks";
 import { useAuth } from "@/context/AuthContext";
+import { useCart } from "@/context/CartContext";
 import Link from "next/link";
 import { IUserSession } from "@/interfaces/userSession";
 
 interface ProfileMenuProps {
   dataUser: null | IUserSession; 
-  logout: () => void; // Asumiendo que es una función que no devuelve nada
+  logout: () => void;
 }
 
 const ProfileMenu = ({  logout }: ProfileMenuProps) => {
@@ -55,6 +56,7 @@ const ProfileMenu = ({  logout }: ProfileMenuProps) => {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { dataUser, logout } = useAuth();
+  const { cartItems } = useCart();
 
   return (
     <nav className="sticky top-0 z-50 w-full backdrop-blur-sm">
@@ -80,30 +82,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="hidden flex-1 items-center justify-center md:flex">
-            <div className="w-full max-w-2xl">
-              <label htmlFor="main-search" className="sr-only">
-                Buscar producto
-              </label>
-              <div className="relative">
-                <input
-                  id="main-search"
-                  type="search"
-                  placeholder="Buscar producto"
-                  className="w-full rounded-full border border-slate-800 bg-slate-900/70 px-4 py-3 pr-14 text-sm text-slate-200 outline-none transition focus:border-slate-600 focus:ring-2 focus:ring-slate-800 cursor-text"
-                />
-                <button
-                  type="button"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white/5 px-3 py-2 text-white transition hover:bg-white/10 cursor-pointer"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="11" cy="11" r="8" />
-                    <path d="M21 21l-4.35-4.35" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
+        
 
           <div className="flex items-center gap-3">
             <div className="hidden items-center gap-6 md:flex">
@@ -134,7 +113,7 @@ const Navbar = () => {
                 <circle cx="18" cy="20" r="1" />
               </svg>
               <span className="ml-2 text-sm text-slate-200 sr-only">Carrito</span>
-              <span className="ml-2 hidden rounded-full bg-red-600 px-2 py-0.5 text-xs font-semibold text-white md:inline-block">0</span>
+              <span className="ml-2 hidden rounded-full bg-red-600 px-2 py-0.5 text-xs font-semibold text-white md:inline-block">{cartItems.length}</span>
             </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}

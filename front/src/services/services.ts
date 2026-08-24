@@ -1,4 +1,4 @@
-import { IProduct } from "../interfaces/types";
+import { IProduct } from "../interfaces/product";
 
 const baseUrl = process.env.NEXT_PUBLIC_BACK_URL
 export const getProducts = async () => {
@@ -9,7 +9,7 @@ export const getProducts = async () => {
     return data;
   }
   catch (error) {
-    console.error('Error fetching products:', error);
+    console.error('Error al obtener productos:', error);
     throw error;
   }
 }
@@ -23,7 +23,7 @@ try {
     }
     return product[0];
   } catch (error) {
-    console.error('Error fetching product by ID:', error);
+    console.error('Error al obtener producto por ID:', error);
     throw error;
   }
 }

@@ -1,17 +1,8 @@
 import Link from "next/link";
-import { IProduct } from "../../interfaces/types";
+import { IProduct } from "../../interfaces/product";
 import Image from "next/image";
+import fallbackImage  from "../../app/helpers/fallbackImage";
 
-const fallbackImage =
-  "data:image/svg+xml;charset=UTF-8," +
-  encodeURIComponent(`
-    <svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
-      <rect width="100%" height="100%" fill="#111827" />
-      <text x="50%" y="50%" font-size="32" fill="#9ca3af" text-anchor="middle" dominant-baseline="middle">
-        Sin imagen
-      </text>
-    </svg>
-  `);
 
 export const CardComponent = ({ name, price, stock, image, id }: IProduct) => {
   const imageSrc = image || fallbackImage;

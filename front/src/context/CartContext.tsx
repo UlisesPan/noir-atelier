@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 "use client"
 import { createContext, useState, useEffect, useContext } from "react";
-import { IProduct } from "@/interfaces/types";
+import { IProduct } from "@/interfaces/product";
 import { useAuth } from "./AuthContext";
 
 interface CartContextProps {
@@ -30,7 +30,7 @@ interface CartProviderProps {
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     const [cartItems, setCartItems] = useState<IProduct[]>([]);
     const [isReady, setIsReady] = useState(false);
-    const { dataUser } = useAuth();
+    const { dataUser, isReady: isAuthReady } = useAuth();
 
 
 
@@ -49,17 +49,28 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     }, []);
 
     useEffect(() => {
+        if (!isAuthReady) return;
+        if (!dataUser) {
+            setCartItems([]);
+            localStorage.removeItem("cartItems");
+        }
+    }, [isAuthReady, dataUser]);
+
+    useEffect(() => {
+        
         if (!isReady) return;
         if (cartItems.length > 0) {
             localStorage.setItem("cartItems", JSON.stringify(cartItems));
         } else {
             localStorage.removeItem("cartItems");
         }
-    }, [cartItems, isReady]);
+    }, [ cartItems, isReady]);
 
     const getIdItems = () => {
         return cartItems.map(item => item.id);
     };
+
+    
 
     
 
@@ -92,4 +103,4 @@ return (
 }
 
 
-export const useCart = () => useContext(CartContext);
+export const useCart = () => useContext(CartContext); 

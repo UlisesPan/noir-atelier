@@ -8,14 +8,15 @@ interface AuthContextProps  {
     dataUser: null | IUserSession;
     setDataUser: (user: IUserSession ) => void;
     logout: () => void;
-    isready: boolean;
+    isReady: boolean;
+    isAuthReady?: boolean;
 }
 
 const AuthContext = createContext<AuthContextProps>({
     dataUser: null,
     setDataUser: () => {},
     logout: () => {},
-    isready: false
+    isReady: false
 });
 
 interface AuthProviderProps {
@@ -25,7 +26,6 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const [dataUser, setDataUser] = useState<IUserSession | null>(null);
     const  [ isReady, setIsReady ] = useState(false);
-
     useEffect(() => {
         try {
             const userSession = localStorage.getItem("userSession");
@@ -51,10 +51,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const logout = () => {
         setDataUser(null);
         localStorage.removeItem("userSession");
+        localStorage.removeItem("cartItems");
     }
 
     return (
-        <AuthContext.Provider value={{ dataUser, setDataUser, logout, isready: isReady }}>
+        <AuthContext.Provider value={{ dataUser, setDataUser, logout, isReady: isReady }}>
             {children}
         </AuthContext.Provider>
     );

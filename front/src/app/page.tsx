@@ -33,8 +33,8 @@ export default async function App() {
               </div>
             </div>
 
-            <div className="relative mx-auto w-full max-w-xl overflow-hidden rounded-[32px] border border-white/10 bg-white/5 shadow-2xl shadow-black/30">
-              <div className="aspect-4/5 bg-slate-900">
+            <div className="relative mx-auto w-full max-w-xl overflow-hidden rounded-32px border border-white/10 bg-white/5 shadow-2xl shadow-black/30">
+              <div className="aspect-4/5.5 bg-slate-900">
                 <Image src={background} alt="Spicebomb product display" className="h-full w-full object-cover" fill />
               </div>
               <div className="space-y-2 p-8">
@@ -51,7 +51,6 @@ export default async function App() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="mb-10 text-center">
             <p className="text-sm uppercase tracking-[0.35em] text-red-400">Productos destacados</p>
-            <h2 className="mt-3 text-3xl font-semibold text-white md:text-4xl">Selección curada para el hombre contemporáneo</h2>
             <p className="mx-auto mt-3 max-w-2xl text-base text-slate-400">
               Explora nuestra colección premium con productos especialmente elegidos para complementar tu estilo de vida.
             </p>

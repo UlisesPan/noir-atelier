@@ -1,4 +1,4 @@
-import { IProduct } from "./types";
+import { IProduct } from "./product";
 
 export interface Order {
   id: number;

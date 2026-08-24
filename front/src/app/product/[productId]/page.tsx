@@ -1,6 +1,6 @@
 import { getProductById } from "@/services/services";
 import { notFound } from "next/navigation";
-import { IProduct } from "../../../interfaces/types";
+import { IProduct } from "../../../interfaces/product";
 import Image from "next/image";
 import fallbackImage from "@/app/helpers/fallbackImage";
 import AddToCartButton from "@/components/AddToCartButton/AddToCartButton";
@@ -26,7 +26,7 @@ const ProductId = async ({ params }: ProductIdProps) => {
       <div className="grid gap-8 lg:grid-cols-2 items-start">
         <div className="w-full">
           <div className="relative w-full overflow-hidden rounded-2xl border border-white/6 bg-slate-900 shadow-lg">
-            <div className="aspect-[4/5] w-full">
+            <div className="aspect-4/5 w-full">
               <Image
                 src={product.image || fallbackImage}
                 alt={product.name}
@@ -42,7 +42,7 @@ const ProductId = async ({ params }: ProductIdProps) => {
           <div className="space-y-4">
             <h1 className="text-3xl font-semibold text-slate-900 ">{product.name}</h1>
             <div className="flex items-center gap-4">
-              <span className="text-3xl font-bold text-red-600">${product.price.toFixed(2)}</span>
+              <span className="text-3xl font-bold text-red-600">${product.price}</span>
               <span className={`px-3 py-1 rounded-full text-sm font-medium ${product.stock > 0 ? 'bg-green-600 text-white' : 'bg-red-600 text-white'}`}>
                 {product.stock > 0 ? 'En stock' : 'Agotado'}
               </span>

@@ -5,22 +5,23 @@ import { useRouter } from 'next/dist/client/components/navigation'
 import { useAuth } from '@/context/AuthContext'
 
 const Register = () => {
-  const { dataUser, isready } = useAuth()
+  const { dataUser, isReady } = useAuth()
     const router = useRouter()
   
     useEffect(() => {
-      if (!isready) return
+      if (!isReady) return
       if (dataUser) {
         router.push("/")
       }
-    }, [dataUser, isready, router])
-  
-    if (!isready) return null
+    }, [dataUser, isReady, router])
+
+    if (!isReady) return null
     if (dataUser) return null
+    
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(207,12,12,0.14),_transparent_32%),#f7f5f3] flex items-center justify-center px-4 py-12">
+    <main className="min-h-screen bg-radial-gradient(circle_at_top_left,_rgba(207,12,12,0.14),_transparent_32%),#f7f5f3] flex items-center justify-center px-4 py-12">
       <section className="w-full max-w-7xl grid gap-10 lg:grid-cols-[0.95fr_1.05fr] items-stretch">
-        <div className="rounded-[32px] bg-slate-950 text-white p-10 shadow-[0_25px_70px_rgba(15,23,42,0.18)] flex flex-col justify-between">
+        <div className="rounded-32px bg-slate-950 text-white p-10 shadow-[0_25px_70px_rgba(15,23,42,0.18)] flex flex-col justify-between">
           <div>
             <span className="inline-flex items-center rounded-full bg-red-100 px-3 py-1 text-sm font-semibold uppercase tracking-[0.3em] text-red-600">Milano Premium</span>
             <h1 className="mt-6 text-4xl font-semibold leading-tight">Regístrate y accede a lo mejor</h1>
@@ -43,7 +44,7 @@ const Register = () => {
           </div>
         </div>
 
-        <div className="rounded-[32px] bg-white border border-gray-200 shadow-[0_24px_70px_rgba(15,23,42,0.08)] p-8 md:p-10">
+        <div className="rounded-32px bg-white border border-gray-200 shadow-[0_24px_70px_rgba(15,23,42,0.08)] p-8 md:p-10">
           <div className="max-w-2xl">
             <div className="mb-8">
               <h2 className="text-3xl font-semibold tracking-tight text-slate-950">Crea tu cuenta</h2>

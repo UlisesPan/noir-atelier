@@ -1,21 +1,23 @@
 'use client'
 import { useAuth } from "@/context/AuthContext"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { useEffect } from "react"
 import LoginForm from "./LoginForm"
 
 const Login = () => {
-  const { dataUser, isready } = useAuth()
+  const { dataUser, isReady } = useAuth()
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const registered = searchParams.get("registered") === "1"
 
   useEffect(() => {
-    if (!isready) return
+    if (!isReady) return
     if (dataUser) {
       router.push("/")
     }
-  }, [dataUser, isready, router])
+  }, [dataUser, isReady, router])
 
-  if (!isready) return null
+  if (!isReady) return null
   if (dataUser) return null
 
   return (
@@ -49,6 +51,13 @@ const Login = () => {
               <h2 className="mt-6 text-3xl font-semibold tracking-tight text-slate-950">Iniciar sesión</h2>
               <p className="mt-3 text-sm text-slate-500">Ingresa con tu correo y contraseña para continuar con tu experiencia Milano.</p>
             </div>
+
+            {registered && (
+              <div className="mb-6 rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
+                Cuenta creada correctamente. Iniciá sesión para continuar.
+              </div>
+            )}
+
             <LoginForm />
           </div>
         </div>

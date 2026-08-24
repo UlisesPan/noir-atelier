@@ -1,6 +1,6 @@
 "use client";
 
-import { IProduct } from "@/interfaces/types";
+import { IProduct } from "@/interfaces/product";
 import {  useCart } from "@/context/CartContext";
 
 interface AddToCartButtonProps {
