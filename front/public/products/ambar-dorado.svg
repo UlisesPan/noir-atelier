@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Ámbar Dorado">
+  <defs>
+    <radialGradient id="bg" cx=".5" cy=".38" r=".85">
+      <stop offset="0" stop-color="#EEDFD0"/><stop offset="1" stop-color="#C99A73"/>
+    </radialGradient>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10"/></filter>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <rect y="820" width="800" height="180" fill="#000" opacity=".04"/>
+  <g transform="translate(400 830) scale(1.22) translate(-400 -790)">
+  <defs>
+    <linearGradient id="liquid-a" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E59A3C"/><stop offset="1" stop-color="#A8561C"/>
+    </linearGradient>
+    <linearGradient id="cap-a" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E9D29B"/><stop offset=".55" stop-color="#B08D57"/><stop offset="1" stop-color="#7A5D33"/>
+    </linearGradient>
+    <linearGradient id="shine-a" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="body-a"><path d="M210,600 a190,190 0 1,0 380,0 a190,190 0 1,0 -380,0 Z"/></clipPath>
+  </defs>
+  <ellipse cx="400" cy="796" rx="235.6" ry="22" fill="#000" opacity=".16" filter="url(#blur)"/>
+  <rect x="366" y="376" width="68" height="40" rx="6" fill="url(#cap-a)"/>
+  <rect x="330" y="260" width="140" height="120" rx="8" fill="url(#cap-a)"/><rect x="344" y="270" width="12" height="100" rx="6" fill="#fff" opacity=".3"/>
+  <path d="M210,600 a190,190 0 1,0 380,0 a190,190 0 1,0 -380,0 Z" fill="#fff" fill-opacity=".38" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
+  <g clip-path="url(#body-a)">
+    <rect x="226" y="470.8" width="348" height="303.2" rx="10" fill="url(#liquid-a)"/>
+    <rect x="226" y="470.8" width="348" height="6" fill="#fff" opacity=".35"/>
+    <rect x="236" y="410" width="34" height="380" fill="url(#shine-a)"/>
+    <rect x="538" y="410" width="12" height="380" fill="url(#shine-a)" opacity=".6"/>
+    <rect x="210" y="770" width="380" height="20" fill="#fff" opacity=".25"/>
+  </g>
+  <g>
+    <rect x="295" y="551" width="210" height="118" rx="3" fill="#FBF8F3" stroke="#B08D57" stroke-width="2"/>
+    <rect x="302" y="558" width="196" height="104" rx="2" fill="none" stroke="#B08D57" stroke-width="1" opacity=".7"/>
+    <text x="400" y="581" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" letter-spacing="4" fill="#1C1A19" opacity=".8">NOIR ATELIER</text>
+    <text x="400" y="617" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#1C1A19">Ámbar</text>
+    <text x="400" y="641" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="16" fill="#1C1A19" opacity=".85">Dorado</text>
+  </g></g>
+</svg>

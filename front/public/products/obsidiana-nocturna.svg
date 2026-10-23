@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Obsidiana Nocturna">
+  <defs>
+    <radialGradient id="bg" cx=".5" cy=".38" r=".85">
+      <stop offset="0" stop-color="#E9E1D6"/><stop offset="1" stop-color="#C9B9A4"/>
+    </radialGradient>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10"/></filter>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <rect y="820" width="800" height="180" fill="#000" opacity=".04"/>
+  <g transform="translate(400 830) scale(1.22) translate(-400 -790)">
+  <defs>
+    <linearGradient id="liquid-a" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2B2622"/><stop offset="1" stop-color="#0E0C0B"/>
+    </linearGradient>
+    <linearGradient id="cap-a" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E9D29B"/><stop offset=".55" stop-color="#B08D57"/><stop offset="1" stop-color="#7A5D33"/>
+    </linearGradient>
+    <linearGradient id="shine-a" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="body-a"><path d="M252,430 H548 Q570,430 570,452 V768 Q570,790 548,790 H252 Q230,790 230,768 V452 Q230,430 252,430 Z"/></clipPath>
+  </defs>
+  <ellipse cx="400" cy="796" rx="210.8" ry="22" fill="#000" opacity=".16" filter="url(#blur)"/>
+  <rect x="366" y="396" width="68" height="40" rx="6" fill="url(#cap-a)"/>
+  <rect x="330" y="280" width="140" height="120" rx="8" fill="url(#cap-a)"/><rect x="344" y="290" width="12" height="100" rx="6" fill="#fff" opacity=".3"/>
+  <path d="M252,430 H548 Q570,430 570,452 V768 Q570,790 548,790 H252 Q230,790 230,768 V452 Q230,430 252,430 Z" fill="#fff" fill-opacity=".38" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
+  <g clip-path="url(#body-a)">
+    <rect x="246" y="487.6" width="308" height="286.4" rx="10" fill="url(#liquid-a)"/>
+    <rect x="246" y="487.6" width="308" height="6" fill="#fff" opacity=".35"/>
+    <rect x="256" y="430" width="34" height="360" fill="url(#shine-a)"/>
+    <rect x="518" y="430" width="12" height="360" fill="url(#shine-a)" opacity=".6"/>
+    <rect x="230" y="770" width="340" height="20" fill="#fff" opacity=".25"/>
+  </g>
+  <g>
+    <rect x="295" y="561" width="210" height="118" rx="3" fill="#141211" stroke="#B08D57" stroke-width="2"/>
+    <rect x="302" y="568" width="196" height="104" rx="2" fill="none" stroke="#B08D57" stroke-width="1" opacity=".7"/>
+    <text x="400" y="591" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" letter-spacing="4" fill="#E9D29B" opacity=".8">NOIR ATELIER</text>
+    <text x="400" y="627" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#F4EEE6">Obsidiana</text>
+    <text x="400" y="651" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="16" fill="#D8CFC4" opacity=".85">Nocturna</text>
+  </g></g>
+</svg>
