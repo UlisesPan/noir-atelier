@@ -80,6 +80,22 @@ export class PaymentsService {
     return order;
   }
 
+  /**
+   * Reconcilia una orden pendiente buscando sus pagos en Mercado Pago por external_reference.
+   * No depende del retorno del navegador ni del webhook (que no llega a localhost).
+   */
+  async syncOrder(orderId: number, userId: number) {
+    const order = await this.orders.findOne(orderId, userId);
+    if (!this.client || order.status !== OrderStatus.PENDING) return order;
+
+    const { results = [] } = await new Payment(this.client).search({
+      options: { external_reference: String(order.id), sort: 'date_created', criteria: 'desc', limit: 10 },
+    });
+    const approved = results.find((p) => p.status === 'approved');
+    if (!approved) return order;
+    return this.orders.updateStatus(order.id, OrderStatus.PAID, { paymentId: String(approved.id) });
+  }
+
   async handleWebhook(type: string | undefined, dataId: string | undefined) {
     if (type !== 'payment' || !dataId) return;
     try {

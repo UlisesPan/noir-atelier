@@ -31,6 +31,14 @@ export class PaymentsController {
     return this.payments.syncPayment(paymentId, user.id);
   }
 
+  /** Verifica contra Mercado Pago si una orden pendiente ya fue pagada. */
+  @Post('sync/:orderId')
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  sync(@CurrentUser() user: JwtUser, @Param('orderId', ParseIntPipe) orderId: number) {
+    return this.payments.syncOrder(orderId, user.id);
+  }
+
   @Post('simulate/:orderId')
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)

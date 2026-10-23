@@ -28,7 +28,8 @@ export function PaymentResult() {
       if (paymentId && paymentId !== "null") {
         await api.post(`/payments/confirm/${paymentId}`).catch(() => null);
       }
-      return api.get<Order>(`/orders/${orderId}`);
+      // Respaldo: consulta por número de pedido (no depende del payment_id ni del webhook).
+      return api.post<Order>(`/payments/sync/${orderId}`).catch(() => api.get<Order>(`/orders/${orderId}`));
     },
     enabled: orderId > 0,
   });
